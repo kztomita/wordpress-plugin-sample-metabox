@@ -1,0 +1,47 @@
+記事投稿ページにメタボックスを追加するサンプル
+
+[概要]
+記事投稿ページにメタボックスを追加して、記事の入力項目をカスタマイズする。
+以下の3つの入力項目(メタボックス)を追加する。
+・チェックボックス
+・ファイルアップロード
+・メディアライブラリを使ったファイルアップロードおよび選択
+
+
+[インストール方法]
+wp-content/plugins以下にsample-metaboxディレクトリを配置。
+
+
+[ファイルの説明]
+./sample-metabox.php
+	Pluginのメインファイル。
+	ほとんど何もしていない。
+
+./sample-metabox-admin.php
+	管理画面内で実行されるファイル。
+	3つのメタボックスの処理は、それぞれ
+	sample-metabox-admin-media.php
+	sample-metabox-admin-checkbox.php,
+	sample-metabox-admin-file.php
+	に分割されており、これらのファイルを読み込む。
+
+./sample-metabox-admin-checkbox.php
+	チェックボックスに関する処理を格納。
+
+./sample-metabox-admin-file.php
+	ファイルアップロードに関する処理を格納。
+
+	<input type="file" />を使ったファイルのアップロードを行う。
+	アップロードしたファイルはメディアライブラリに登録せずに、
+	記事管理ページのみで管理を行う。
+	ファイルを再アップロードした場合は、旧ファイルを削除することで、
+	ファイルの差し替えを行う。記事を削除した場合は、アップロード済みの
+	ファイルを削除する。
+
+./sample-metabox-admin-media.php
+	メディアライブラリを開いてファイルのアップロード／選択を行う処理を格納。
+
+./js/media_upload.js
+	メディアライブラリのOpen処理、およびファイル選択時の処理。
+	sample-metabox-admin-media.phpとセットで使用。
+
